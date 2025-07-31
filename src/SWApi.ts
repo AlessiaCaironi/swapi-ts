@@ -181,7 +181,7 @@ class Resource < S > {
 
 function collectionBuilder < T > (resource: ResourcesType) {
   return class SWCollection {
-    static root = `https://swapi.dev/api/${resource}/`;
+    static root = `https://swapi.py4e.com/api/${resource}/`;
     public resources: Resource < T > [] = [];
 
     constructor(unparsedResources: T[]) {
