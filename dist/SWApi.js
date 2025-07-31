@@ -34,10 +34,10 @@ class Resource {
     }
     async populateSingle(path, obj) {
         if (Array.isArray(obj[path])) {
-            obj[path] = await Promise.all(obj[path].map(url => request(url.replace('http', 'https'))));
+            obj[path] = await Promise.all(obj[path].map(url => request(url.replace('http:', 'https:'))));
             return this;
         }
-        obj[path] = await request(obj[path].replace('http', 'https'));
+        obj[path] = await request(obj[path].replace('http:', 'https:'));
         return this;
     }
     populateRec(path, obj) {
@@ -90,7 +90,7 @@ function collectionBuilder(resource) {
                 return new SWCollection(_.flatMap(pages, 'results'));
             }
         },
-        _a.root = `https://swapi.dev/api/${resource}/`,
+        _a.root = `https://swapi.py4e.com/api/${resource}/`,
         _a;
 }
 export const Films = collectionBuilder(ResourcesType.Films);
